@@ -24,11 +24,11 @@ class TestSimpleLazy < Minitest::Test
       lazy.inspect
       lazy.value
       lazy.cached?
-      lazy == lazy
-      [lazy, lazy].sort
+      [lazy, lazy, (lazy == lazy) && 1, lazy.eql?(lazy) && 1].sort
       lazy.hash
     rescue => e
       error = e
+      puts error.backtrace
     end
 
     assert_nil(error)
