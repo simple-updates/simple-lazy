@@ -1,4 +1,5 @@
 require "minitest/autorun"
+require_relative "../../lib/simple/lazy"
 
 class TestSimpleLazy < Minitest::Test
   def test_1
