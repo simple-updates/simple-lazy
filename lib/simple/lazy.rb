@@ -1,6 +1,6 @@
 module Simple
   class Lazy
-    VERSION = "1.0.0"
+    VERSION = "1.0.1"
 
     attr_reader :value
 
@@ -28,7 +28,7 @@ module Simple
     end
 
     def cached
-      unless @cached
+      unless @is_cached
         @cached = @block.call(value)
         @is_cached = true
       end

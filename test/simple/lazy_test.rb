@@ -38,4 +38,11 @@ class TestSimpleLazy < Minitest::Test
     lazy = Simple::Lazy.new(1) { |id| "oh" }
     assert_equal("oh", lazy.to_s)
   end
+
+  def test_5
+    lazy = Simple::Lazy.new(1) { nil }
+    assert_equal(false, lazy.cached?)
+    assert_equal("", lazy.to_s)
+    assert_equal(true, lazy.cached?)
+  end
 end
