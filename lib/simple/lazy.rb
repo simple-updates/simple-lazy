@@ -1,6 +1,6 @@
 module Simple
   class Lazy
-    VERSION = "1.0.1"
+    VERSION = "1.0.2"
 
     attr_reader :value
 
@@ -25,6 +25,14 @@ module Simple
 
     def method_missing(method, *args, &block)
       cached.public_send(method, *args, &block)
+    end
+
+    def respond_to_missing?(method, include_private = false)
+      cached.respond_to?(method) || super
+    end
+
+    def methods
+      methods + cached.methods
     end
 
     def cached
